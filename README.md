@@ -23,8 +23,25 @@ Example 3, some queue does not use up its own quota:
 ```
 Dispatch Limit : 100
 Queue (work in queue | Quota %): A (50|30), B (12|20), C (50|60)
-Output (work to dispatch from queue): A (29), B (12), C (59*)
-* round up for utilize dispatch limit
+Output (work to dispatch from queue): A (38), B (12), C (50)
 ```
 
 # Inputs
+The number of queue
+```
+int queueCnt = 3;
+```
+The maximum number of workitem to dispatch from queue, cannot be 0
+```
+int dispatchLimit = 100;
+```
+The number of workitem in each queue
+```
+Integer[] workItemQueueCnt = new Integer[]{50,12,50};
+```
+The weight of each queue, need not to be add up to 100. This is the ratio of distribution to each queue. Cannot be 0 (in case of 0 please simply remove it from the arrays).
+```
+Integer[] queueWeight = new Integer[]{3,2,5};
+```
+# Output
+The sample rountine print out the number for each queue.
